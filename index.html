@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S. B. Lombardo — Illustration &amp; Painting</title>
+<meta name="description" content="Portfolio and commission offerings of S. B. Lombardo. Digital illustrations, character design, VTuber models, and traditional acrylic paintings.">
+<meta name="author" content="S. B. Lombardo">
+
+<!-- Open Graph -->
+<meta property="og:title" content="S. B. Lombardo — Illustration &amp; Painting">
+<meta property="og:description" content="Digital illustrations, VTuber model art, and traditional acrylic paintings. Commissions open.">
+<meta property="og:type" content="website">
+
+<!-- Favicon (paw mark, inline SVG data-uri so no extra file is required) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%23C89A5B'%3E%3Cellipse cx='50' cy='62' rx='22' ry='18'/%3E%3Cellipse cx='24' cy='34' rx='9' ry='12' transform='rotate(-18 24 34)'/%3E%3Cellipse cx='45' cy='20' rx='9' ry='13' transform='rotate(-6 45 20)'/%3E%3Cellipse cx='68' cy='20' rx='9' ry='13' transform='rotate(6 68 20)'/%3E%3Cellipse cx='87' cy='34' rx='9' ry='12' transform='rotate(18 87 34)'/%3E%3C/g%3E%3C/svg%3E">
+
+<!-- Site stylesheet: small and self-contained, fetch it as early as possible -->
+<link rel="stylesheet" href="./style.css">
+
+<!-- Preconnects: fonts + the CDN all the artwork is served from -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+
+<!-- Preload the hero's first (visible-on-load) background image so it isn't
+     discovered late — CSS background-images aren't picked up by the preload
+     scanner the way <img> tags are. -->
+<link rel="preload" as="image" fetchpriority="high" href="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=2000&q=80">
+
+<!-- Google Fonts: Fraunces (display, characterful, italic-capable) + Work Sans (clean body/UI)
+     Loaded non-blocking (preload + swap-on-load) so the fonts don't hold up first paint;
+     the noscript tag keeps things working with JS disabled. Weights are trimmed to only
+     the ones actually referenced in style.css / index.html. -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap"></noscript>
+
+<!-- Tailwind CSS via CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          cream:  '#F6F1E8', // light background
+          ink:    '#2B2620', // primary dark text
+          gold:   '#C89A5B', // primary accent
+          clay:   '#B57A52', // secondary warm accent
+          sage:   '#7C8768', // muted green depth
+          stone:  '#8C8577', // muted grey depth
+          dusk:   '#211E1A', // dark-mode background
+          duskcard:'#2A2621', // dark-mode surface
+          duskink:'#EFE9DD', // dark-mode primary text
+        },
+        fontFamily: {
+          display: ['"Fraunces"', 'serif'],
+          body: ['"Work Sans"', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+</head>
+
+<body class="bg-cream text-ink dark:bg-dusk dark:text-duskink font-body antialiased transition-colors duration-500">
+
+<!-- ============================= -->
+<!-- SKIP LINK (accessibility)     -->
+<!-- ============================= -->
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ============================= -->
+<!-- NAVIGATION                    -->
+<!-- ============================= -->
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <nav class="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between h-20" aria-label="Primary">
+	
+	<!-- Wordmark + paw mark -->
+    <a href="#home" class="flex items-center gap-2.5 group" aria-label="S. B. Lombardo — home">
+      <span class="paw-mark w-5 h-5 shrink-0 text-gold group-hover:rotate-12 transition-transform duration-300" aria-hidden="true"></span>
+      <span class="font-display italic text-xl md:text-2xl tracking-tight">S.&nbsp;B.&nbsp;Lombardo</span>
+    </a>
+	
+	<!-- Desktop links -->
+    <div class="hidden lg:flex items-center gap-8">
+      <ul class="flex items-center gap-6 font-body text-[12px] tracking-[0.12em] uppercase">
+        <li><a href="#home" class="nav-link" data-nav>Home</a></li>
+        <li><a href="./shop.html" class="nav-link">Shop</a></li>
+        <li><a href="#commissions" class="nav-link" data-nav>Commissions</a></li>
+        <li><a href="#contact" class="nav-link" data-nav>Contact</a></li>
+      </ul>
+
+
+	<!-- Dark / light toggle -->
+      <button id="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false"
+        class="icon-btn relative hover:border-gold transition-colors duration-300">
+        <svg id="icon-sun" class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path stroke-linecap="round" d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/></svg>
+        <svg id="icon-moon" class="w-[18px] h-[18px] hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.7 6.7 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+    </div>
+
+	<!-- Mobile controls -->
+    <div class="flex items-center gap-2 lg:hidden">
+      <button id="theme-toggle-mobile" type="button" aria-label="Toggle dark mode" aria-pressed="false"
+        class="icon-btn">
+        <svg class="icon-sun-m w-[17px] h-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path stroke-linecap="round" d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/></svg>
+        <svg class="icon-moon-m w-[17px] h-[17px] hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.7 6.7 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+
+      <button id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"
+        class="icon-btn">
+        <span class="hamburger" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu panel -->
+  <div id="mobile-menu" class="lg:hidden max-h-0 overflow-hidden transition-[max-height] duration-500 ease-in-out bg-cream/98 dark:bg-dusk/98 backdrop-blur border-t border-ink/10 dark:border-duskink/10">
+    <div class="px-6 pt-4">
+      <span class="slot-pill">
+        <span class="status-dot"></span>
+        3 / 5 slots open
+      </span>
+    </div>
+    <nav aria-label="Mobile">
+      <ul class="flex flex-col px-6 py-2 font-body text-sm tracking-[0.12em] uppercase">
+        <li><a href="#home" class="block py-3.5 border-b border-ink/10 dark:border-duskink/10" data-nav data-mobile>Home</a></li>
+        <li><a href="./shop.html" class="block py-3.5 border-b border-ink/10 dark:border-duskink/10" data-mobile>Shop</a></li>
+        <li><a href="#commissions" class="block py-3.5 border-b border-ink/10 dark:border-duskink/10" data-nav data-mobile>Commissions</a></li>
+        <li><a href="#contact" class="block py-3.5" data-nav data-mobile>Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================= -->
+  <!-- HOME / HERO                   -->
+  <!-- ============================= -->
+  <section id="home" class="relative h-[100svh] min-h-[600px] w-full overflow-hidden" aria-label="Introduction">
+  
+    <!-- Slideshow layers -->
+    <div class="absolute inset-0">
+      <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=2000&q=80')"></div>
+      <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?auto=format&fit=crop&w=2000&q=80"></div>
+      <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1531913764164-f85c52e6e654?auto=format&fit=crop&w=2000&q=80"></div>
+    </div>
+	
+	<!-- Gradient overlay for legibility -->
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-ink/45"></div>
+
+
+	<!-- Hero content -->
+    <div class="relative h-full flex flex-col items-center justify-center text-center px-6">
+      <p class="reveal font-body text-[11px] md:text-xs tracking-[0.32em] uppercase text-cream/80 mb-5">Digital Illustration, VTuber Art &amp; Acrylic Painting</p>
+      <h1 class="reveal font-display italic font-medium text-cream text-5xl sm:text-6xl md:text-8xl leading-[1.05] tracking-tight">
+        S.&nbsp;B.&nbsp;Lombardo
+      </h1>
+      <p class="reveal mt-6 max-w-xl font-body text-cream/90 text-base md:text-lg leading-relaxed">
+        Creating custom digital character art, VTuber designs, and traditional acrylic portraiture. <span class="whitespace-nowrap">(๑'ᵕ'๑)⸝*</span>
+      </p>
+
+      <div class="reveal mt-10 flex flex-col sm:flex-row items-center gap-4">
+        <a href="#commissions" class="btn-solid">Explore Commissions</a>
+        <a href="#contact" class="btn-outline-hero">Get in Touch</a>
+      </div>
+	  <!-- Social Links Quick Access -->
+      <div class="reveal mt-8 flex items-center justify-center gap-5 text-cream/75 text-[11px] tracking-[0.14em] uppercase">
+        <a href="#" class="hover:text-gold transition-colors">Twitch</a>
+        <span aria-hidden="true" class="text-cream/30">•</span>
+        <a href="#" class="hover:text-gold transition-colors">Twitter&nbsp;/&nbsp;X</a>
+        <span aria-hidden="true" class="text-cream/30">•</span>
+        <a href="#" class="hover:text-gold transition-colors">Instagram</a>
+        <span aria-hidden="true" class="text-cream/30">•</span>
+        <a href="#" class="hover:text-gold transition-colors">VGen</a>
+      </div>
+    </div>
+
+    <a href="#process" aria-label="Scroll to next section" class="scroll-cue absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cream/80">
+      <span class="paw-mark w-4 h-4 opacity-90" aria-hidden="true"></span>
+      <span class="w-px h-8 bg-cream/50"></span>
+    </a>
+  </section>
+
+
+  <!-- ============================= -->
+  <!-- COMMISSIONS & PROCESS         -->
+  <!-- ============================= -->
+  <section id="process" class="py-24 md:py-32 px-6 lg:px-10 bg-ink/[0.03] dark:bg-duskcard/40 scroll-mt-20">
+    <div class="mx-auto max-w-6xl">
+	
+	  <!-- Section intro -->
+      <div class="reveal-up max-w-2xl mx-auto text-center mb-20 md:mb-28">
+        <span class="eyebrow">Commissions</span>
+        <h2 class="mt-4 font-display italic font-medium text-4xl md:text-5xl">Bring a piece to life</h2>
+        <p class="mt-6 text-ink/70 dark:text-duskink/70 leading-relaxed">
+          I take commissions across two mediums:
+           <strong class="font-medium text-ink dark:text-duskink">digital illustration</strong>,
+          and hand-painted <strong class="font-medium text-ink dark:text-duskink">acrylic on canvas</strong>.
+          Every piece is planned individually with you, from first sketch to final varnish or export.
+        </p>
+        <div class="mt-8 inline-flex items-center gap-2 text-sm font-medium">
+          <span class="status-dot"></span>
+          <span id="commission-status">Commissions open — currently booking</span>
+        </div>
+      </div>
+
+      <!-- Process timeline -->
+      <div class="reveal-up mb-24 md:mb-32">
+        <h3 class="font-display italic text-2xl md:text-3xl text-center mb-14">How a commission comes together</h3>
+        <ol class="reveal-up process-grid">
+          <li class="process-step">
+            <span class="process-num">01</span>
+            <h4>Inquiry &amp; consultation</h4>
+            <p>You reach out through the form below with references, size, and budget in mind. I reply within 2–3 days with availability and a starting quote.</p>
+          </li>
+          <li class="process-step">
+            <span class="process-num">02</span>
+            <h4>Concept &amp; deposit</h4>
+            <p>Once we agree on scope, I send a fixed quote and invoice. A 50% deposit secures your place in the queue.</p>
+          </li>
+          <li class="process-step">
+            <span class="process-num">03</span>
+            <h4>Sketch approval</h4>
+            <p>You'll receive a rough composition sketch. This is the stage for structural changes — pose, layout, palette direction.</p>
+          </li>
+          <li class="process-step">
+            <span class="process-num">04</span>
+            <h4>The work itself</h4>
+            <p>I paint or render in stages, sharing progress photos along the way for digital and traditional pieces alike.</p>
+          </li>
+          <li class="process-step">
+            <span class="process-num">05</span>
+            <h4>Delivery</h4>
+            <p>Digital files arrive print-ready; original paintings are carefully packed and shipped, or available for local pickup.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Pricing -->
+  <section id="commissions" class="pt-24 md:pt-32 px-6 lg:px-10 scroll-mt-20" aria-labelledby="commissions-heading">
+    <h2 id="commissions-heading" class="sr-only">Commission pricing</h2>
+    <div class="mx-auto max-w-6xl">
+	  
+	  <!-- Digital Section -->
+      <div class="reveal-up mb-24">
+        <div class="text-center mb-10">
+          <span class="eyebrow">Option A</span>
+          <h3 class="mt-3 font-display italic text-2xl md:text-3xl">Digital commissions</h3>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+		  <!-- Colored Sketch Tier -->
+          <div class="tier-card">
+            <div class="tier-img"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1531913764164-f85c52e6e654?auto=format&fit=crop&w=500&q=75" alt="Colored sketch commission example"></div>
+            <h4>Colored sketch</h4>
+            <p class="font-serif text-2xl text-clay dark:text-gold">Starting at $35+</p>
+            <p class="tier-desc">Clean line art with base colors and simplified shading.</p>
+            <a href="#contact" class="tier-cta">Select option</a>
+          </div>
+		  
+		  <!-- Rendered Illustration Tier -->
+          <div class="tier-card">
+            <div class="tier-img"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?auto=format&fit=crop&w=500&q=75" alt="Rendered illustration commission example"></div>
+            <h4>Rendered illustration</h4>
+            <p class="font-serif text-2xl text-clay dark:text-gold">Starting at $80+</p>
+            <p class="tier-desc">Full-color rendering with detailed lighting and a polished finish.</p>
+            <a href="#contact" class="tier-cta">Select option</a>
+          </div>
+		  
+		  <!-- Character Design Tier -->
+          <div class="tier-card">
+            <div class="tier-img"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=500&q=75" alt="Character design commission example"></div>
+            <h4>Character design</h4>
+            <p class="font-serif text-2xl text-clay dark:text-gold">Starting at $90+</p>
+            <p class="tier-desc">Full character turnarounds, concepts, or outfit breakdowns.</p>
+            <a href="#contact" class="tier-cta">Select option</a>
+          </div>
+		  
+		  <!-- VTuber Model Art Tier -->
+          <div class="tier-card tier-featured">
+            <div class="tier-img">
+              <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1499426600726-a950358acf16?auto=format&fit=crop&w=500&q=75" alt="VTuber model art commission example">
+              <span class="tier-badge">Rig-ready</span>
+            </div>
+            <h4>VTuber model art</h4>
+            <p class="font-serif text-2xl text-clay dark:text-gold">Starting at $100+</p>
+            <p class="tier-desc">Layer-separated model art prepared for Live2D rigging.</p>
+            <a href="#contact" class="tier-cta tier-cta-solid">Select option</a>
+          </div>
+        </div>
+      </div>
+	  
+	  <!-- Traditional Section -->
+      <div class="reveal-up mb-24">
+        <div class="text-center mb-10">
+          <span class="eyebrow">Option B</span>
+          <h3 class="mt-3 font-display italic text-2xl md:text-3xl">Traditional acrylic work</h3>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+		  <!-- Standard Acrylic Works -->
+          <div class="trad-card">
+            <div class="trad-img"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?auto=format&fit=crop&w=900&q=75" alt="Original acrylic painting example"></div>
+            <h4>Original acrylic painting</h4>
+            <p class="font-serif text-3xl text-clay dark:text-gold mt-1">Starting at $90+</p>
+            <p class="trad-desc">Available on stretched canvas or wood board panel.</p>
+            <ul class="trad-list">
+              <li>Custom individual, family, or portrait subject matter</li>
+              <li>Archival protective varnish layer</li>
+              <li>Optional custom framing add-ons available on quote</li>
+            </ul>
+            <a href="#contact" class="tier-cta">Request traditional quote</a>
+          </div>
+
+		  <!-- Pet Portrait Pricing Breakdown -->
+          <div class="trad-card">
+            <div class="trad-img"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1580136579312-94651dfd596d?auto=format&fit=crop&w=900&q=75" alt="Acrylic pet portrait example"></div>
+            <h4>Pet portrait series</h4>
+            <p class="font-serif text-3xl text-clay dark:text-gold mt-1">$100 – $250+</p>
+            <p class="trad-desc">Specialized acrylic pet portraits, scaled by size and subject count.</p>
+            <ul class="trad-breakdown">
+              <li><span>Single pet, small canvas</span><span>$100</span></li>
+              <li><span>Single pet, medium/large canvas</span><span>$150 – $210</span></li>
+              <li><span>Multiple pets / detailed scene</span><span>$250+ | By Quote</span></li>
+            </ul>
+            <a href="#contact" class="tier-cta">Book a pet portrait</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Terms of Service -->
+  <section id="tos" class="pb-24 md:pb-32 px-6 lg:px-10 scroll-mt-20" aria-labelledby="tos-heading">
+    <div class="mx-auto max-w-3xl">
+      <div class="reveal-up text-center mb-14">
+        <span class="eyebrow">Guidelines &amp; policy</span>
+        <h2 id="tos-heading" class="mt-4 font-display italic font-medium text-4xl md:text-5xl">Terms of service</h2>
+        <p class="mt-4 text-sm text-ink/60 dark:text-duskink/60">Please review before placing a commission request.</p>
+      </div>
+
+      <div class="reveal-up divide-y divide-ink/10 dark:divide-duskink/10 border-y border-ink/10 dark:border-duskink/10">
+	  
+        <details class="tos-item" open>
+          <summary>Payment &amp; deposits</summary>
+          <p>A 50% non-refundable deposit is required to begin work and secures your place in the queue. The remaining balance is due before digital files are sent or a painting ships.</p>
+        </details>
+        <details class="tos-item">
+          <summary>Revisions</summary>
+          <p>One round of structural revisions is included at the sketch stage. Changes requested after painting or rendering has begun may incur an additional fee.</p>
+        </details>
+        <details class="tos-item">
+          <summary>Timeline</summary>
+          <p>Turnaround is typically 2–6 weeks depending on medium and current queue length. Rush requests are considered case by case for an added fee.</p>
+        </details>
+        <details class="tos-item">
+          <summary>Usage &amp; rights</summary>
+          <p>Commissioned work is for your personal, non-commercial use unless a commercial license is agreed in writing beforehand. I retain the right to display the piece in my portfolio and on social media.</p>
+        </details>
+        <details class="tos-item">
+          <summary>What I won't draw</summary>
+          <p>I'm happy to discuss most subjects, but I decline hate symbols, explicit content, and extremely dense scenes without a separate complexity quote. When in doubt, ask.</p>
+        </details>
+        <details class="tos-item">
+          <summary>Cancellations</summary>
+          <p>You may cancel before the sketch stage for a refund of any amount paid beyond the deposit. Once painting or final rendering has begun, payments are non-refundable.</p>
+        </details>
+      </div>
+
+      <p class="reveal-up mt-8 text-center text-xs italic text-ink/50 dark:text-duskink/50">
+        Note: I may ask you to fill out a brief form acknowledging these terms before starting work.
+      </p>
+    </div>
+  </section>
+
+  <section id="gallery" class="py-24 md:py-32 px-6 lg:px-10 scroll-mt-20">
+    <div class="mx-auto max-w-6xl">
+      <div class="reveal-up text-center mb-14">
+        <span class="eyebrow">Portfolio showcase</span>
+        <h2 class="mt-4 font-display italic font-medium text-4xl md:text-5xl">Recent works</h2>
+        <p class="mt-4 text-sm text-ink/60 dark:text-duskink/60">Click any piece to view larger.</p>
+      </div>
+
+      <div class="reveal-up gallery-grid" id="gallery-grid">
+        <button class="gallery-item" data-full="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?auto=format&fit=crop&w=1600&q=80" data-caption="Whispers in the Garden — acrylic on canvas, 16×20in" aria-label="Open image: Whispers in the Garden">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?auto=format&fit=crop&w=800&q=70" alt="Acrylic painting, Whispers in the Garden">
+          <span class="gallery-overlay"><span class="gallery-medium">Traditional acrylic</span><span class="gallery-title">Whispers in the Garden</span></span>
+        </button>
+        <button class="gallery-item" data-full="https://images.unsplash.com/photo-1531913764164-f85c52e6e654?auto=format&fit=crop&w=1600&q=80" data-caption="Feline Companion No. 4 — digital illustration &amp; character study" aria-label="Open image: Feline Companion No. 4">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1531913764164-f85c52e6e654?auto=format&fit=crop&w=800&q=70" alt="Digital illustration, Feline Companion No. 4">
+          <span class="gallery-overlay"><span class="gallery-medium">Digital</span><span class="gallery-title">Feline Companion No. 4</span></span>
+        </button>
+        <button class="gallery-item" data-full="https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?auto=format&fit=crop&w=1600&q=80" data-caption="Solitude at Dawn — acrylic &amp; gold accent on wood panel" aria-label="Open image: Solitude at Dawn">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?auto=format&fit=crop&w=800&q=70" alt="Acrylic painting, Solitude at Dawn">
+          <span class="gallery-overlay"><span class="gallery-medium">Traditional acrylic</span><span class="gallery-title">Solitude at Dawn</span></span>
+        </button>
+        <button class="gallery-item" data-full="https://images.unsplash.com/photo-1580136579312-94651dfd596d?auto=format&fit=crop&w=1600&q=80" data-caption="Process shot — brushwork detail" aria-label="Open image: Process shot">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1580136579312-94651dfd596d?auto=format&fit=crop&w=800&q=70" alt="Close up of paintbrush and canvas texture">
+          <span class="gallery-overlay"><span class="gallery-medium">Studio</span><span class="gallery-title">Process shot</span></span>
+        </button>
+        <button class="gallery-item" data-full="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=1600&q=80" data-caption="Studio wall — framed originals" aria-label="Open image: Studio wall">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=800&q=70" alt="Gallery wall with framed paintings">
+          <span class="gallery-overlay"><span class="gallery-medium">Studio</span><span class="gallery-title">Framed originals</span></span>
+        </button>
+        <button class="gallery-item" data-full="https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1600&q=80" data-caption="Character Turnaround Study — digital, full scene" aria-label="Open image: Character Turnaround Study">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=800&q=70" alt="Colorful digital character illustration">
+          <span class="gallery-overlay"><span class="gallery-medium">Digital</span><span class="gallery-title">Character Turnaround Study</span></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="contact" class="py-24 md:py-32 px-6 lg:px-10 scroll-mt-20">
+    <div class="mx-auto max-w-5xl">
+
+      <div class="reveal-up text-center max-w-xl mx-auto mb-16">
+        <span class="eyebrow">Find me</span>
+        <h2 class="mt-4 font-display italic font-medium text-4xl md:text-5xl">Let's talk about your piece</h2>
+        <p class="mt-6 text-ink/70 dark:text-duskink/70 leading-relaxed">
+          Whether it's a commission question or just to say hello — I read every message myself.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-12 md:gap-16">
+
+        <form action="mailto:sblombardo.art@gmail.com" method="post" enctype="text/plain" id="contact-form" class="md:col-span-3 reveal-up" novalidate>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="field">
+              <label for="name">Name / Handle</label>
+              <input type="text" id="name" name="name" required autocomplete="name" aria-describedby="name-error">
+              <span class="field-error" id="name-error" data-error-for="name">Please share your name.</span>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required autocomplete="email" aria-describedby="email-error">
+              <span class="field-error" id="email-error" data-error-for="email">A valid email helps me reply.</span>
+            </div>
+          </div>
+
+          <div class="field mt-6">
+            <label for="inquiry">Commission category</label>
+            <select id="inquiry" name="inquiry" required aria-describedby="inquiry-error">
+              <option value="" disabled selected>Choose one…</option>
+              <option>Digital — colored sketch ($35+)</option>
+              <option>Digital — rendered illustration ($80+)</option>
+              <option>Digital — character design ($90+)</option>
+              <option>Digital — VTuber model art ($100+)</option>
+              <option>Traditional — acrylic painting ($90+)</option>
+              <option>Traditional — pet portrait ($100–$250+)</option>
+              <option>Custom / other request</option>
+            </select>
+            <span class="field-error" id="inquiry-error" data-error-for="inquiry">Please choose a category.</span>
+          </div>
+
+          <div class="field mt-6">
+            <label for="message">Project Brief & Details</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Tell me about the piece you have in mind — subject, size, timeline, references if you have them." aria-describedby="message-error"></textarea>
+            <span class="field-error" id="message-error" data-error-for="message">A short message helps me respond well.</span>
+          </div>
+
+          <button type="submit" class="btn-solid mt-8 w-full sm:w-auto">Send message</button>
+
+          <p id="form-success" class="hidden mt-5 text-sm text-sage dark:text-sage font-medium" role="status">
+            Thank you — your message has been sent. I'll be in touch within a few days.
+          </p>
+        </form>
+
+		<!-- Direct info -->
+        <div class="md:col-span-2 reveal-up space-y-10">
+          <div>
+            <h3 class="eyebrow mb-3">Email</h3>
+            <a href="mailto:sblombardo.art@gmail.com" class="font-display italic text-xl md:text-2xl hover:text-gold transition-colors">sblombardo.art@gmail.com</a>
+          </div>
+
+          <div>
+            <h3 class="eyebrow mb-3">Find Me</h3>
+            <div class="flex items-center gap-4">
+              <a href="#" aria-label="Instagram" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none"/></svg>
+              </a>
+              <a href="#" aria-label="Twitter / X" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l7.2 9.6L4.4 20H7l5.6-5.9L17 20h3l-7.6-10 6.4-6h-2.6l-5 5.3L8.6 4H4z"/></svg>
+              </a>
+              <a href="#" aria-label="Twitch" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3h15v11l-4.5 4.5H12L9 21v-2.5H5V3Z"/><path d="M12.5 7v4M16.5 7v4"/></svg>
+              </a>
+              <a href="#" aria-label="VGen" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h4l4 11 4-11h4"/><path d="M9 16.5h6"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="eyebrow mb-3">Response time &amp; studio</h3>
+            <p class="text-sm text-ink/70 dark:text-duskink/70 leading-relaxed">
+              I typically reply within 2–3 business days.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="py-8 px-6 lg:px-10 border-t border-ink/10 dark:border-duskink/10 text-center text-xs text-ink/60 dark:text-duskink/60">
+  <p>&copy; <span id="year"></span> S. B. Lombardo. All rights reserved.</p>
+</footer>
+
+<div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox-close" aria-label="Close viewer">&times;</button>
+  <button class="lightbox-nav lightbox-prev" aria-label="Previous image">&#8249;</button>
+  <figure class="lightbox-figure">
+    <img id="lightbox-img" src="" alt="" decoding="async">
+    <figcaption id="lightbox-caption"></figcaption>
+  </figure>
+  <button class="lightbox-nav lightbox-next" aria-label="Next image">&#8250;</button>
+</div>
+
+<script src="./main.js" defer></script>
+</body>
+</html>

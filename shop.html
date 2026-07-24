@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop — S. B. Lombardo</title>
+<meta name="description" content="Shop page for S. B. Lombardo — coming soon.">
+<meta name="author" content="S. B. Lombardo">
+<meta name="robots" content="noindex">
+
+<!-- Favicon (paw mark, inline SVG data-uri so no extra file is required) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%23C89A5B'%3E%3Cellipse cx='50' cy='62' rx='22' ry='18'/%3E%3Cellipse cx='24' cy='34' rx='9' ry='12' transform='rotate(-18 24 34)'/%3E%3Cellipse cx='45' cy='20' rx='9' ry='13' transform='rotate(-6 45 20)'/%3E%3Cellipse cx='68' cy='20' rx='9' ry='13' transform='rotate(6 68 20)'/%3E%3Cellipse cx='87' cy='34' rx='9' ry='12' transform='rotate(18 87 34)'/%3E%3C/g%3E%3C/svg%3E">
+
+<!-- Site stylesheet: small and self-contained, fetch it as early as possible -->
+<link rel="stylesheet" href="./style.css">
+
+<!-- Preconnects: fonts + the CDN all the artwork is served from -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Google Fonts: Fraunces (display, characterful, italic-capable) + Work Sans (clean body/UI)
+     Loaded non-blocking (preload + swap-on-load) so the fonts don't hold up first paint;
+     the noscript tag keeps things working with JS disabled. Same trimmed weight list as index.html. -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap"></noscript>
+
+<!-- Tailwind CSS via CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          cream:  '#F6F1E8', // light background
+          ink:    '#2B2620', // primary dark text
+          gold:   '#C89A5B', // primary accent
+          clay:   '#B57A52', // secondary warm accent
+          sage:   '#7C8768', // muted green depth
+          stone:  '#8C8577', // muted grey depth
+          dusk:   '#211E1A', // dark-mode background
+          duskcard:'#2A2621', // dark-mode surface
+          duskink:'#EFE9DD', // dark-mode primary text
+        },
+        fontFamily: {
+          display: ['"Fraunces"', 'serif'],
+          body: ['"Work Sans"', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+</head>
+
+<body class="bg-cream text-ink dark:bg-dusk dark:text-duskink font-body antialiased transition-colors duration-500">
+
+<!-- ============================= -->
+<!-- SKIP LINK (accessibility)     -->
+<!-- ============================= -->
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ============================= -->
+<!-- NAVIGATION (same as index.html, links pointed back at the homepage) -->
+<!-- ============================= -->
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-500 solid">
+  <nav class="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between h-20" aria-label="Primary">
+
+    <!-- Wordmark + paw mark -->
+    <a href="./index.html#home" class="flex items-center gap-2.5 group" aria-label="S. B. Lombardo — home">
+      <span class="paw-mark w-5 h-5 shrink-0 text-gold group-hover:rotate-12 transition-transform duration-300" aria-hidden="true"></span>
+      <span class="font-display italic text-xl md:text-2xl tracking-tight">S.&nbsp;B.&nbsp;Lombardo</span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden lg:flex items-center gap-8">
+      <ul class="flex items-center gap-6 font-body text-[12px] tracking-[0.12em] uppercase">
+        <li><a href="./index.html#home" class="nav-link">Home</a></li>
+        <li><a href="./shop.html" class="nav-link active" aria-current="page">Shop</a></li>
+        <li><a href="./index.html#commissions" class="nav-link">Commissions</a></li>
+        <li><a href="./index.html#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <!-- Dark / light toggle -->
+      <button id="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false"
+        class="icon-btn relative hover:border-gold transition-colors duration-300">
+        <svg id="icon-sun" class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path stroke-linecap="round" d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/></svg>
+        <svg id="icon-moon" class="w-[18px] h-[18px] hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.7 6.7 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile controls -->
+    <div class="flex items-center gap-2 lg:hidden">
+      <button id="theme-toggle-mobile" type="button" aria-label="Toggle dark mode" aria-pressed="false"
+        class="icon-btn">
+        <svg class="icon-sun-m w-[17px] h-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path stroke-linecap="round" d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/></svg>
+        <svg class="icon-moon-m w-[17px] h-[17px] hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.7 6.7 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+
+      <button id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"
+        class="icon-btn">
+        <span class="hamburger" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu panel -->
+  <div id="mobile-menu" class="lg:hidden max-h-0 overflow-hidden transition-[max-height] duration-500 ease-in-out bg-cream/98 dark:bg-dusk/98 backdrop-blur border-t border-ink/10 dark:border-duskink/10">
+    <nav aria-label="Mobile">
+      <ul class="flex flex-col px-6 py-2 font-body text-sm tracking-[0.12em] uppercase">
+        <li><a href="./index.html#home" class="block py-3.5 border-b border-ink/10 dark:border-duskink/10" data-mobile>Home</a></li>
+        <li><a href="./shop.html" class="block py-3.5 border-b border-ink/10 dark:border-duskink/10" data-mobile>Shop</a></li>
+        <li><a href="./index.html#commissions" class="block py-3.5 border-b border-ink/10 dark:border-duskink/10" data-mobile>Commissions</a></li>
+        <li><a href="./index.html#contact" class="block py-3.5" data-mobile>Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ============================= -->
+  <!-- SHOP — placeholder            -->
+  <!-- ============================= -->
+  <section class="min-h-[100svh] flex items-center justify-center px-6 pt-20">
+    <div class="text-center max-w-lg mx-auto py-24">
+      <span class="paw-mark w-8 h-8 mx-auto mb-6 text-gold" aria-hidden="true"></span>
+      <span class="eyebrow">Shop</span>
+      <h1 class="mt-4 font-display italic font-medium text-4xl md:text-5xl">Shop page coming soon</h1>
+      <p class="mt-6 text-ink/70 dark:text-duskink/70 leading-relaxed">
+        I'm still setting up prints, stickers, and ready-to-ship originals here. In the meantime, commissions are open — head back to the homepage to take a look.
+      </p>
+      <a href="./index.html#home" class="btn-solid mt-10 inline-block">Back to Home</a>
+    </div>
+  </section>
+</main>
+
+<footer class="py-8 px-6 lg:px-10 border-t border-ink/10 dark:border-duskink/10 text-center text-xs text-ink/60 dark:text-duskink/60">
+  <p>&copy; <span id="year"></span> S. B. Lombardo. All rights reserved.</p>
+</footer>
+
+<script src="./main.js" defer></script>
+</body>
+</html>
